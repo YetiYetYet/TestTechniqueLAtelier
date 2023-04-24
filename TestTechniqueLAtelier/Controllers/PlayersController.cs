@@ -43,4 +43,16 @@ public class PlayersController : ControllerBase
             return NotFound();
         }
     }
+    
+    [HttpGet("/getAveragesBmiOfPlayers")]
+    public ActionResult<double> GetAveragesBmiOfPlayers()
+    {
+        return _playersService.GetAveragesBMIOfPlayers();
+    }
+    
+    [HttpGet("/getMedianSizeOfPlayers")]
+    public ActionResult<double> GetMedianSizeOfPlayers()
+    {
+        return _playersService.GetMedianSizeOfPlayers();
+    }
 }
