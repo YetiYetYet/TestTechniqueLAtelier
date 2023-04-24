@@ -1,0 +1,14 @@
+﻿version: '3.8'
+services:
+  atelier-test-api:
+    container_name: atelier-test-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+    build:
+      dockerfile: Dockerfile
+      context: ./TestTechniqueLAtelier
+    ports:
+      - "8080:80"
+      - "5000:5000"
+      - "443:443"

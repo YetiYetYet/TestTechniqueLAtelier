@@ -22,7 +22,7 @@ public class PlayersController : ControllerBase
         return _playersService.GetPlayersOrderedByScore().ToList();
     }
     
-    [HttpGet("/{id}")]
+    [HttpGet("/{id:int}")]
     public ActionResult<Player> GetPlayerById(int id)
     {
         try {

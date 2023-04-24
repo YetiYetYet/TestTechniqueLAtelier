@@ -46,11 +46,11 @@ public class PlayersService : IPlayersService
         return Math.Round(_rootPlayers.Players.Average(p => IBM(p.Data.Weight/1000d, p.Data.Height/100d)), 1);
     }
     
+    // I'm very bad with math, I prefer to use libraries for that
     public double GetMedianSizeOfPlayers()
     {
         IEnumerable<double> heights = _rootPlayers.Players.Select(height => height.Data.Height/100d);
         return heights.Median();
-
     }
     
     /// <summary>
@@ -60,8 +60,5 @@ public class PlayersService : IPlayersService
     /// <param name="height">in meter</param>
     /// <returns>The rounded imc value at first digit</returns>
     public double IBM(double weight, double height) => Math.Round(weight / (height * height), 1);
-    
-    
-    
     
 }
