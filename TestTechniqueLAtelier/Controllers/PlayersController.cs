@@ -22,9 +22,37 @@ public class PlayersController : ControllerBase
         return _playersService.GetPlayersOrderedByScore().ToList();
     }
     
-    // [HttpGet("/player/{id}")]
-    // public ActionResult<Player> GetPlayerById(int id)
-    // {
-    //     return _playersService.GetPlayerById(id);
-    // }
+    [HttpGet("/{id:int}")]
+    public ActionResult<Player> GetPlayerById(int id)
+    {
+        try {
+            return _playersService.GetPlayerById(id);
+        }
+        catch (InvalidOperationException) {
+            return NotFound();
+        }
+    }
+    
+    [HttpGet("/getCountryWithMostGameRatioWon")]
+    public ActionResult<Country> GetCountryWithMostGameRatioWon()
+    {
+        try {
+            return _playersService.GetCountryWithMostGameRatioWon();
+        }
+        catch (InvalidOperationException) {
+            return NotFound();
+        }
+    }
+    
+    [HttpGet("/getAveragesBmiOfPlayers")]
+    public ActionResult<double> GetAveragesBmiOfPlayers()
+    {
+        return _playersService.GetAveragesBMIOfPlayers();
+    }
+    
+    [HttpGet("/getMedianSizeOfPlayers")]
+    public ActionResult<double> GetMedianSizeOfPlayers()
+    {
+        return _playersService.GetMedianSizeOfPlayers();
+    }
 }
