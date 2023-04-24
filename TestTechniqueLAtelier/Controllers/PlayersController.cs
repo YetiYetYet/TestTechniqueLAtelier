@@ -22,9 +22,14 @@ public class PlayersController : ControllerBase
         return _playersService.GetPlayersOrderedByScore().ToList();
     }
     
-    // [HttpGet("/player/{id}")]
-    // public ActionResult<Player> GetPlayerById(int id)
-    // {
-    //     return _playersService.GetPlayerById(id);
-    // }
+    [HttpGet("/{id}")]
+    public ActionResult<Player> GetPlayerById(int id)
+    {
+        try {
+            return _playersService.GetPlayerById(id);
+        }
+        catch (InvalidOperationException) {
+            return NotFound();
+        }
+    }
 }
