@@ -32,4 +32,15 @@ public class PlayersController : ControllerBase
             return NotFound();
         }
     }
+    
+    [HttpGet("/getCountryWithMostGameRatioWon")]
+    public ActionResult<Country> GetCountryWithMostGameRatioWon()
+    {
+        try {
+            return _playersService.GetCountryWithMostGameRatioWon();
+        }
+        catch (InvalidOperationException) {
+            return NotFound();
+        }
+    }
 }

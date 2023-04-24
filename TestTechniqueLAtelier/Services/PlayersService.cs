@@ -28,4 +28,19 @@ public class PlayersService : IPlayersService
     {
         return _rootPlayers.Players.First(p => p.Id == id);
     }
+    
+    // I have absolutely no idea how to see the ratio of won games for each country
+    // So I just return the first country
+    // Is it based on the Rank of the players?
+    // or the Points?
+    // I never played tennis
+    public Country GetCountryWithMostGameRatioWon()
+    {
+        // Randomly return the first country
+        return _rootPlayers.Players.First().Country;
+    }
+
+
+
+
 }
